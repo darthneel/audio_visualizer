@@ -1,16 +1,31 @@
-var $audio;
-var audioSrc;
+var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+var analyser;
+var audio;
 
-var audioCtx = new AudioContext(),
-		analyser = audioCtx.createAnalyser();
 
-function startSong(audioEl){
-	audioSrc = ctx.createMediaElementSource(audioEl);
-	audioEl.play()
-};
 
 $(function(){
+	audio = $('audio')[0]
+	analyser = audioCtx.createAnalyser();
+	var source = audioCtx.createMediaElementSource(audio);
 
-	$audio = $('audio');
+	source.connect(analyser);
 
-});
+	analyser.connect(audioCtx.destination);
+
+	var freqData = new Uint8Array(analyser.frequencyBinCount);
+	console.log(freqData)
+
+	function renderFrame() {
+		requestAnimationFrame(renderFrame);
+		// update data in frequencyData
+		analyser.getByteFrequencyData(freqData);
+		// render frame based on values in frequencyData
+		// console.log(frequencyData)
+		console.log(freqData)
+		console.log(freqData.length)
+	}
+
+	audio.play();
+	renderFrame();
+})
