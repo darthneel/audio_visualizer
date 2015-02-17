@@ -6,6 +6,6 @@
 
 ---
 
-*V1* - Expiremental version
+*v1* - Expiremental version
 
-*V2* - Rewrote V1 with prototypes
+*v2* - Rewrote V1 with prototypes
