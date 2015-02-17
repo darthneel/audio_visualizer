@@ -38,7 +38,7 @@ Visualizer.prototype = {
                       return d/5 +'px'
                     })
                     .attr('cx', function(d, i){
-                      return i*50 + 'px'
+                      return i*52 + 'px'
                     })
                     .attr('cy', function(){ 
                       return '100px'

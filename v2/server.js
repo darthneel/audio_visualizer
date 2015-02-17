@@ -5,7 +5,7 @@ var http = require('http').Server(app);
 app.use(express.static(__dirname + '/static'));
 
 app.listen(3000, function () {
-  console.log('Example app listening at http://%s:%s');
+  console.log('App listening on port 3000');
 });
 
 app.get('/', function(req, res){
