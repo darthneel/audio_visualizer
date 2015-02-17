@@ -3,6 +3,9 @@ var analyser;
 var currentSong;
 var freqData;
 
+var range = d3.range(0,20);
+var colorScale = d3.scale.category20c()
+
 Array.prototype.sample = function() {
   var idx = Math.floor(this.length * Math.random());
   return this[idx]
@@ -15,9 +18,6 @@ function setUpAudio(audio){
   source.connect(analyser);
   analyser.connect(audioCtx.destination);
 };
-
-var range = d3.range(0,20);
-var colorScale = d3.scale.category20c()
 
 function projectData(data){
 

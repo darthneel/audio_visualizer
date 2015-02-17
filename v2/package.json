@@ -1,0 +1,23 @@
+{
+  "name": "audio_visualizer",
+  "version": "0.0.0",
+  "description": "Visualizing audio using D3.js",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/darthneel/audio_visualizer.git"
+  },
+  "author": "Neel Patel <neelp22@gmail.com> (https://github.com/darthneel)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/darthneel/audio_visualizer/issues"
+  },
+  "homepage": "https://github.com/darthneel/audio_visualizer",
+  "dependencies": {
+    "express": "^4.11.2"
+  }
+}
