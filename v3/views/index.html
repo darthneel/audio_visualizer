@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Audio Visualizer</title>
+
+	<link rel="stylesheet" href="./css/styles.css">
+	
+	<script src='https://code.jquery.com/jquery-2.1.3.min.js'></script>
+	<script src='./js/crayola.js'></script>
+  <script src='./js/d3.js'></script>
+	<script src="./js/scripts.js"></script>
+
+</head>
+<body>
+	
+	<audio id="innocence" src="./audio/Nero - Innocence (RIOT Remix).mp3" preload="auto"></audio>
+	<audio src="./audio/KNDRK full.mp3" id="kendrick"></audio>
+	<audio src="./audio/Christian Smith - Flyertalk _Wehbba Remix_.mp3" id="flyer"></audio>
+	<audio src="./audio/Martin Garrix - Animals (Will Sparks Remix).mp3" id="animals"></audio>
+	
+	<select name="dropdown">
+		<option value="innocence">Nero - Innocence (RIOT remix)</option>
+		<option value="kendrick">Kendrick Lamar - Bitch Dont Kill My Vibe Remix </option>
+		<option value="flyer">Christian Smith - Flyertalk (Wehbba Remix)</option>
+		<option value="animals">Martin Garrix - Animals (Will Sparks Remix)</option>
+	</select>
+
+	<svg></svg>
+
+</body>
+</html>

@@ -43,8 +43,9 @@ Visualizer.prototype = {
                     .attr('cy', function(){ 
                       return '100px'
                     })
-                    .style('opacity', function(){ 
+                    .style('opacity', function(d){ 
                       return .7 
+                      // return d/200;
                     })
                     .style('fill', function(d){ 
                       return that.colorScale(d/5); 
