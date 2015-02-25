@@ -3,10 +3,13 @@ var vis;
 var Visualizer = function(){
   this.audioCtx = new (window.AudioContext || window.webkitAudioContext)();
   this.range = d3.range(0,20);
-  this.colorScale = d3.scale.category20c();
+  // this.colorScale = d3.scale.category20c();
   this.analyser;
   this.currentSong;
   this.freqData;
+  this.colorScale = d3.scale.linear()
+                      .domain([0, 51])
+                      .range(["#f1c40f", "#e74c3c"]);
 
 };
 
@@ -48,7 +51,7 @@ Visualizer.prototype = {
                       // return d/200;
                     })
                     .style('fill', function(d){ 
-                      return that.colorScale(d/100); 
+                      return that.colorScale(d/5); 
                     });
 
     svg.selectAll('circle')
