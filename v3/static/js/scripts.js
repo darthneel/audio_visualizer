@@ -7,23 +7,21 @@ var Visualizer = function(){
   this.analyser;
   this.currentSong;
   this.freqData;
-  this.barWidth = 25;
+  this.barWidth = 20;
   this.width = 800;
-  this.height = 600;
-  this.x = d3.scale.linear()
-            .range([this.barWidth / 2, this.width - this.barWidth / 2]);
+  this.height = 300;
+  this.y;
   this.y = d3.scale.linear()
+            .domain([0, 255])
             .range([this.height, 0]);
-
-  console.log(this.y(125));
 };
 
 Visualizer.prototype = {
   init: function(){
     var that = this;
     d3.select('svg')
-      .attr('width', that.width + 'px')
-      .attr('height', that.height + 'px')
+      .attr('width', that.width)
+      .attr('height', that.height)
       .style('background-color', '#2c3e50')
 
     this.analyser = this.audioCtx.createAnalyser();
@@ -34,23 +32,31 @@ Visualizer.prototype = {
   projectData: function(data){
     var that = this;
 
+ 
+
+
     var svg = d3.select('svg');
+
+    svg.selectAll('rect')
+    .data(data)
+      .exit()
+      .remove(); 
 
     var bars = svg.selectAll('rect')
                       .data(data)
-                      .enter()
-                      .append('rect');
-
+                      .enter().append("rect")
+                      
    var bars = svg.selectAll('rect')
                   .data(data)
                     .attr('x', function(d, i){
-                      return 25 * i + 30 + 'px';
+                      return that.barWidth + i * 50;
                     })
+                    .attr('y', function(d) { return that.y(d); })
                     .attr('height', function(d) { 
-                      return 50 - that.y(d); 
+                      return that.height - that.y(d);
                     })
                     .attr('width', function(){ 
-                      return '25px';
+                      return that.barWidth;
                     })
                     .style('opacity', function(){ 
                       return .8;
@@ -59,13 +65,13 @@ Visualizer.prototype = {
                       return that.colorScale(d/5); 
                     });
 
-    svg.selectAll('rect')
-        .data(data)
-          .exit()
-          .remove();
   },
   setUpAudio: function(audio){
     this.freqData = new Uint8Array(this.analyser.frequencyBinCount);
+
+    // this.y = d3.scale.linear()
+    //         .domain([0, d3.max(this.freqData)])
+    //         .range([this.height, 0]);
 
     var source = this.audioCtx.createMediaElementSource(audio);
     source.connect(this.analyser);
@@ -106,6 +112,9 @@ Visualizer.prototype = {
   },
   renderFrame: function(){
     this.analyser.getByteFrequencyData(this.freqData);
+    // this.y = d3.scale.linear()
+    //     .domain([0, d3.max(this.freqData)])
+    //     .range([this.height, 0]);
     this.projectData(this.freqData);
 
     requestAnimationFrame(this.renderFrame.bind(this));

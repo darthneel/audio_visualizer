@@ -44,11 +44,11 @@ Visualizer.prototype = {
                       return '100px'
                     })
                     .style('opacity', function(d){ 
-                      return .7 
+                      return .8 
                       // return d/200;
                     })
                     .style('fill', function(d){ 
-                      return that.colorScale(d/5); 
+                      return that.colorScale(d/100); 
                     });
 
     svg.selectAll('circle')
