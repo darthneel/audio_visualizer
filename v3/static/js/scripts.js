@@ -15,9 +15,10 @@ var Visualizer = function(){
             .domain([0, 255])
             .range([this.height, 0]);
   this.colorScale = d3.scale.linear()
-                      .domain([0, 85])
-                      .range(["#f1c40f", "#e67e22", "#e74c3c"]);
-                      // .range(["#3498db", "#1abc9c"]);
+                      .domain([250, 75])
+                      // .range(["#e74c3c", "#f1c40f"]);
+                      // .range(['#e74c3c', '#2980b9', '#9b59b6']);
+                      .range(["#2980b9", "#9b59b6"]);
 }
 
 Visualizer.prototype = {
