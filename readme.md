@@ -10,6 +10,6 @@
 
 *v2* - Rewrote V1 with prototypes and updated animation flow to be smoother. 
 
-*v3* - Changed animation from circles to bars. Now looks more like a traditional visualizer.
+*v3* - Changed animation from circles to bars. Now looks more like a traditional visualizer. [Demo](https://radiant-earth-6712.herokuapp.com/)
 
 
